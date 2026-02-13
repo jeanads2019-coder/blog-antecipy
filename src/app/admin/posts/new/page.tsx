@@ -15,6 +15,12 @@ import {
     SelectValue,
 } from '@/components/ui/select'
 import {
+    Tabs,
+    TabsContent,
+    TabsList,
+    TabsTrigger,
+} from "@/components/ui/tabs"
+import {
     Popover,
     PopoverContent,
     PopoverTrigger,
@@ -385,37 +391,71 @@ export default function NewPostPage() {
 
                         <div className="grid gap-2">
                             <Label>Imagem de Capa</Label>
-                            <div
-                                className="border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-muted/50 transition-colors cursor-pointer relative overflow-hidden group min-h-[200px]"
-                                onClick={() => document.getElementById('cover-upload')?.click()}
-                            >
-                                <input
-                                    id="cover-upload"
-                                    type="file"
-                                    className="hidden"
-                                    accept="image/*"
-                                    onChange={handleCoverUpload}
-                                />
-                                {coverUrl ? (
-                                    <div className="relative w-full aspect-video rounded overflow-hidden">
-                                        <img src={coverUrl} alt="Cover" className="object-cover w-full h-full" />
-                                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                                            <span className="text-white font-medium flex items-center gap-2">
-                                                <Upload className="h-4 w-4" /> Trocar imagem
-                                            </span>
-                                        </div>
+                            <Tabs defaultValue="upload" className="w-full">
+                                <TabsList className="grid w-full grid-cols-2 mb-4">
+                                    <TabsTrigger value="upload">Upload</TabsTrigger>
+                                    <TabsTrigger value="link">Link Direto</TabsTrigger>
+                                </TabsList>
+                                <TabsContent value="upload">
+                                    <div
+                                        className="border-2 border-dashed rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-muted/50 transition-colors cursor-pointer relative overflow-hidden group min-h-[200px]"
+                                        onClick={() => document.getElementById('cover-upload')?.click()}
+                                    >
+                                        <input
+                                            id="cover-upload"
+                                            type="file"
+                                            className="hidden"
+                                            accept="image/*"
+                                            onChange={handleCoverUpload}
+                                        />
+                                        {coverUrl ? (
+                                            <div className="relative w-full aspect-video rounded overflow-hidden">
+                                                <img src={coverUrl} alt="Cover" className="object-cover w-full h-full" />
+                                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                                                    <span className="text-white font-medium flex items-center gap-2">
+                                                        <Upload className="h-4 w-4" /> Trocar imagem
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                                                    {uploading ? <Loader2 className="h-6 w-6 animate-spin text-primary" /> : <Upload className="h-6 w-6 text-primary" />}
+                                                </div>
+                                                <p className="text-sm font-semibold text-zinc-700">Clique para selecionar imagem</p>
+                                                <p className="text-xs text-muted-foreground mt-1">PNG, JPG ou WEBP (Recomendado: 1200x630px)</p>
+                                                {uploading && <p className="text-xs text-primary font-medium animate-pulse mt-2">Enviando arquivo...</p>}
+                                            </>
+                                        )}
                                     </div>
-                                ) : (
-                                    <>
-                                        <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                                            {uploading ? <Loader2 className="h-6 w-6 animate-spin text-primary" /> : <Upload className="h-6 w-6 text-primary" />}
-                                        </div>
-                                        <p className="text-sm font-semibold text-zinc-700">Clique para selecionar imagem</p>
-                                        <p className="text-xs text-muted-foreground mt-1">PNG, JPG ou WEBP (Recomendado: 1200x630px)</p>
-                                        {uploading && <p className="text-xs text-primary font-medium animate-pulse mt-2">Enviando arquivo...</p>}
-                                    </>
-                                )}
-                            </div>
+                                </TabsContent>
+                                <TabsContent value="link">
+                                    <div className="space-y-4">
+                                        <Input
+                                            placeholder="Cole o link da imagem aqui (https://...)"
+                                            value={coverUrl}
+                                            onChange={(e) => setCoverUrl(e.target.value)}
+                                        />
+                                        {coverUrl && (
+                                            <div className="relative w-full aspect-video rounded overflow-hidden border bg-muted">
+                                                <img
+                                                    src={coverUrl}
+                                                    alt="Preview"
+                                                    className="object-cover w-full h-full"
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = "https://via.placeholder.com/800x400?text=Erro+ao+carregar+imagem"
+                                                    }}
+                                                />
+                                            </div>
+                                        )}
+                                        {!coverUrl && (
+                                            <div className="w-full aspect-video rounded border-2 border-dashed flex items-center justify-center bg-muted/30">
+                                                <p className="text-xs text-muted-foreground">Preview da imagem</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </TabsContent>
+                            </Tabs>
                         </div>
 
                         {/* Meta Info */}
