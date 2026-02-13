@@ -13,19 +13,17 @@ export function Footer() {
                         </p>
                     </div>
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold">Produto</h4>
+                        <h4 className="text-sm font-semibold">Plataforma</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li><Link href="/" className="hover:text-primary">Blog e Notícias</Link></li>
                             <li><Link href="/funcionalidades" className="hover:text-primary">Como funciona</Link></li>
-                            <li><Link href="/planos" className="hover:text-primary">Planos</Link></li>
-                            <li><Link href="/seguranca" className="hover:text-primary">Segurança</Link></li>
                         </ul>
                     </div>
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold">Empresa</h4>
+                        <h4 className="text-sm font-semibold">Institucional</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="/sobre" className="hover:text-primary">Sobre nós</Link></li>
-                            <li><Link href="/blog" className="hover:text-primary">Blog</Link></li>
-                            <li><Link href="/contato" className="hover:text-primary">Carreiras</Link></li>
+                            <li><Link href="/sobre" className="hover:text-primary">Sobre a Antecipy</Link></li>
+                            <li><Link href="/blog" className="hover:text-primary">Central de Insights</Link></li>
                         </ul>
                     </div>
                     <div className="space-y-4">

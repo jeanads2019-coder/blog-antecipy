@@ -12,20 +12,14 @@ export function Header() {
                 </Link>
 
                 {/* Navigation - Desktop */}
-                <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-                    <Link href="/" className="transition-colors hover:text-foreground/80 text-foreground/60">Home</Link>
-                    <Link href="/sobre" className="transition-colors hover:text-foreground/80 text-foreground/60">Sobre</Link>
-                    <Link href="/funcionalidades" className="transition-colors hover:text-foreground/80 text-foreground/60">Como funciona</Link>
-                    <Link href="/planos" className="transition-colors hover:text-foreground/80 text-foreground/60">Planos</Link>
-                    <Link href="/blog" className="transition-colors hover:text-foreground/80 text-foreground">Blog</Link>
-                    <Link href="/contato" className="transition-colors hover:text-foreground/80 text-foreground/60">Contato</Link>
+                <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <Link href="/" className="transition-colors hover:text-primary text-foreground">Blog</Link>
+                    <Link href="/funcionalidades" className="transition-colors hover:text-primary text-foreground/60">Como funciona</Link>
+                    <Link href="/sobre" className="transition-colors hover:text-primary text-foreground/60">Sobre</Link>
                 </nav>
 
-                {/* CTA */}
-                <div className="flex items-center space-x-4">
-                    <Button variant="default" className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-                        Comece agora
-                    </Button>
+                <div className="flex items-center">
+                    {/* Espaço para manter layout ou adicionar social icons no futuro */}
                 </div>
             </div>
         </header>

@@ -6,7 +6,7 @@ import { Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useDebouncedCallback } from "use-debounce"
 
-export function SearchInput() {
+export function SearchInput({ defaultValue }: { defaultValue?: string }) {
     const searchParams = useSearchParams()
     const { replace } = useRouter()
 
@@ -17,7 +17,7 @@ export function SearchInput() {
         } else {
             params.delete('q')
         }
-        replace(`/blog?${params.toString()}`)
+        replace(`/?${params.toString()}`)
     }, 300)
 
     return (

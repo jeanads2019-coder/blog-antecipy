@@ -1,14 +1,73 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 
-export default function Home() {
+import { getCategories, getPosts } from "@/lib/api"
+import { PostCard } from "@/components/blog/PostCard"
+import { CategoryChips } from "@/components/blog/CategoryChips"
+import { Suspense } from "react"
+import { SearchInput } from "@/components/blog/SearchInput"
+
+export const dynamic = 'force-dynamic'
+
+export default async function BlogHomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  const params = await searchParams
+  const categorySlug = params?.category as string | undefined
+  const query = params?.q as string | undefined
+
+  // Real Data Fetching
+  const postsPromise = getPosts(categorySlug, query)
+  const categoriesPromise = getCategories()
+
+  const [posts, categories] = await Promise.all([postsPromise, categoriesPromise])
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-      <h1 className="text-4xl font-bold mb-4">Bem-vindo ao Blog Antecipy</h1>
-      <p className="text-xl text-muted-foreground mb-8">Notícias e dicas sobre antecipação de recebíveis.</p>
-      <Link href="/blog">
-        <Button size="lg" className="rounded-full px-8">Ver Blog</Button>
-      </Link>
+    <div className="container min-h-screen py-10 space-y-12">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b pb-8">
+        <div className="space-y-2">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter">Insights para sua <span className="text-primary">Liquidez</span></h1>
+          <p className="text-xl text-muted-foreground max-w-xl">
+            Explore estratégias financeiras e novidades do mercado de antecipação com a Antecipy.
+          </p>
+        </div>
+
+        <div className="w-full md:w-80">
+          <SearchInput defaultValue={query} />
+        </div>
+      </div>
+
+      {/* Content Section */}
+      <div className="space-y-8">
+        {/* Categories */}
+        <Suspense fallback={<div className="h-10 w-full animate-pulse bg-muted rounded-full" />}>
+          <CategoryChips categories={categories} />
+        </Suspense>
+
+        {/* Posts Grid */}
+        {posts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map(post => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-32 bg-zinc-50 rounded-3xl border border-dashed">
+            <p className="text-zinc-400 text-lg">Nenhum artigo encontrado para sua busca.</p>
+          </div>
+        )}
+      </div>
+
+      {/* Simple footer/newsletter placeholder for home */}
+      <div className="bg-primary/5 rounded-3xl p-12 text-center space-y-4">
+        <h3 className="text-2xl font-bold">Receba insights semanais</h3>
+        <p className="text-muted-foreground">Junte-se a +2.000 empreendedores que aceleram seu caixa.</p>
+        <div className="max-w-md mx-auto flex gap-2">
+          <input type="email" placeholder="Seu melhor e-mail" className="flex-1 bg-white border rounded-full px-4 text-sm" />
+          <button className="bg-primary text-white rounded-full px-6 py-2 text-sm font-bold hover:bg-primary/90 transition-colors">Assinar</button>
+        </div>
+      </div>
     </div>
   )
 }
