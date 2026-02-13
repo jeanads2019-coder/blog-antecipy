@@ -27,14 +27,7 @@ export default async function BlogHomePage({
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b pb-8">
         <div className="space-y-2">
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter">Insights para sua <span className="text-primary">Liquidez</span></h1>
-          <p className="text-xl text-muted-foreground max-w-xl">
-            Explore estratégias financeiras e novidades do mercado de antecipação com a Antecipy.
-          </p>
-        </div>
-
-        <div className="w-full md:w-80">
-          <SearchInput defaultValue={query} />
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter">Blog <span className="text-primary">Antecipy</span></h1>
         </div>
       </div>
 

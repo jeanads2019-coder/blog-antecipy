@@ -9,7 +9,7 @@ export function Footer() {
             <div className="container mx-auto px-6 py-16 md:py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16 border-b border-zinc-900 pb-16">
                     <div className="space-y-6">
-                        <img src="/logo.svg" alt="Antecipy" className="h-8 md:h-10 w-auto brightness-0 invert" />
+                        <img src="/logo.svg" alt="Antecipy" className="h-8 md:h-10 w-auto" />
                         <p className="text-lg md:text-xl font-medium text-zinc-300 max-w-md leading-relaxed">
                             Impulsionando o crescimento de empresas com soluções financeiras inteligentes e antecipação de recebíveis.
                         </p>
@@ -45,8 +45,7 @@ export function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/funcionalidades" className="hover:text-white transition-colors">Como funciona</Link></li>
                             <li><Link href="/vantagens" className="hover:text-white transition-colors">Vantagens</Link></li>
-                            <li><Link href="/integracoes" className="hover:text-white transition-colors">Integrações</Link></li>
-                            <li><Link href="/precos" className="hover:text-white transition-colors">Taxas e Prazos</Link></li>
+                            <li><Link href="/integracoes" className="hover:text-white transition-colors text-zinc-600 cursor-not-allowed pointer-events-none">Integrações (Em breve)</Link></li>
                         </ul>
                     </div>
 
@@ -54,8 +53,6 @@ export function Footer() {
                         <h4 className="text-white font-bold text-sm uppercase tracking-wider">Empresa</h4>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/sobre" className="hover:text-white transition-colors">Sobre nós</Link></li>
-                            <li><Link href="/carreira" className="hover:text-white transition-colors flex items-center gap-2">Carreiras <span className="text-[10px] bg-primary/20 text-primary px-1.5 py-0.5 rounded ml-1">Vagas</span></Link></li>
-                            <li><Link href="/imprensa" className="hover:text-white transition-colors">Imprensa</Link></li>
                             <li><Link href="/contato" className="hover:text-white transition-colors">Fale Conosco</Link></li>
                         </ul>
                     </div>
@@ -64,9 +61,6 @@ export function Footer() {
                         <h4 className="text-white font-bold text-sm uppercase tracking-wider">Conteúdo</h4>
                         <ul className="space-y-3 text-sm">
                             <li><Link href="/" className="hover:text-white transition-colors">Blog</Link></li>
-                            <li><Link href="/materiais" className="hover:text-white transition-colors">E-books e Guias</Link></li>
-                            <li><Link href="/calculadora" className="hover:text-white transition-colors">Calculadora de Taxas</Link></li>
-                            <li><Link href="/glossario" className="hover:text-white transition-colors">Glossário Financeiro</Link></li>
                         </ul>
                     </div>
 

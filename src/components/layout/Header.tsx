@@ -21,7 +21,6 @@ export function Header() {
 
     const navLinks = [
         { name: 'Blog', href: '/' },
-        { name: 'Como funciona', href: '/funcionalidades' },
         { name: 'Sobre', href: '/sobre' },
     ]
 
@@ -83,7 +82,7 @@ export function Header() {
                             damping: 25,
                             mass: 0.8
                         }}
-                        className="fixed left-1/2 z-[100] w-auto pointer-events-auto"
+                        className="fixed top-0 left-1/2 z-[100] w-auto pointer-events-auto"
                     >
                         <header className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_15px_35px_-5px_rgba(0,0,0,0.1)] px-6 md:px-8 h-12 md:h-14 rounded-full flex items-center justify-between gap-10 md:gap-14 border-zinc-200/10">
                             <Link href="/" className="shrink-0">

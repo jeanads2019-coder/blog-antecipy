@@ -1,6 +1,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { format } from 'date-fns'
@@ -33,7 +34,7 @@ export function PostCard({ post }: PostCardProps) {
                             </Badge>
                         )}
                         {post.tags?.slice(0, 2).map(tag => (
-                            <Badge key={tag} variant="outline" className="text-muted-foreground border-muted-foreground/20">
+                            <Badge key={tag} variant="secondary" className="bg-primary/5 text-primary hover:bg-primary/10 border-primary/20">
                                 {tag}
                             </Badge>
                         ))}
@@ -41,9 +42,16 @@ export function PostCard({ post }: PostCardProps) {
                     <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {post.title}
                     </h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3">
-                        {post.excerpt}
-                    </p>
+                    <div className="text-muted-foreground text-sm line-clamp-3 prose prose-zinc prose-sm dark:prose-invert">
+                        <ReactMarkdown
+                            allowedElements={['p', 'strong', 'em', 'span', 'b', 'i']} // Limit elements for safety in cards
+                            components={{
+                                p: ({ node, ...props }) => <span {...props} /> // Render p as span to avoid nesting issues if simple text
+                            }}
+                        >
+                            {post.excerpt}
+                        </ReactMarkdown>
+                    </div>
                 </CardContent>
                 <CardFooter className="p-6 pt-0 text-xs text-muted-foreground flex items-center justify-between">
                     <div className="flex items-center gap-2">
