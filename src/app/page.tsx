@@ -58,16 +58,6 @@ export default async function BlogHomePage({
           </div>
         )}
       </div>
-
-      {/* Simple footer/newsletter placeholder for home */}
-      <div className="bg-primary/5 rounded-3xl p-12 text-center space-y-4">
-        <h3 className="text-2xl font-bold">Receba insights semanais</h3>
-        <p className="text-muted-foreground">Junte-se a +2.000 empreendedores que aceleram seu caixa.</p>
-        <div className="max-w-md mx-auto flex gap-2">
-          <input type="email" placeholder="Seu melhor e-mail" className="flex-1 bg-white border rounded-full px-4 text-sm" />
-          <button className="bg-primary text-white rounded-full px-6 py-2 text-sm font-bold hover:bg-primary/90 transition-colors">Assinar</button>
-        </div>
-      </div>
     </div>
   )
 }
