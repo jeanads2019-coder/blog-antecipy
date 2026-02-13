@@ -1,0 +1,9 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded Box with A -->
+  <rect width="50" height="50" rx="12" fill="#0066FF"/>
+  <path d="M15 35L25 15L35 35M18 30H32" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40" cy="35" r="5" fill="#99CC00"/>
+  
+  <!-- Text: antecipy -->
+  <text x="60" y="38" fill="#333333" style="font-family: Arial, sans-serif; font-size: 32px; font-weight: bold;">antecipy</text>
+</svg>
