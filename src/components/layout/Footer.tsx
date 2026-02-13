@@ -67,9 +67,7 @@ export function Footer() {
                     <div className="space-y-4">
                         <h4 className="text-white font-bold text-sm uppercase tracking-wider">Social</h4>
                         <div className="flex gap-4">
-                            <Link href="#" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></Link>
-                            <Link href="#" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></Link>
-                            <Link href="#" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors"><Youtube className="w-5 h-5" /></Link>
+                            <Link href="https://www.instagram.com/antecipy/" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></Link>
                         </div>
                     </div>
                 </div>

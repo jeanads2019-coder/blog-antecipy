@@ -40,9 +40,7 @@ export function Header() {
                             </Link>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <Link href="#" className="hover:text-primary transition-colors"><Instagram className="h-3.5 w-3.5" /></Link>
-                            <Link href="#" className="hover:text-primary transition-colors"><Linkedin className="h-3.5 w-3.5" /></Link>
-                            <Link href="#" className="hover:text-primary transition-colors"><Youtube className="h-3.5 w-3.5" /></Link>
+                            <Link href="https://www.instagram.com/antecipy/" target="_blank" className="hover:text-primary transition-colors"><Instagram className="h-3.5 w-3.5" /></Link>
                         </div>
                     </div>
                 </div>
@@ -77,14 +75,12 @@ export function Header() {
                         animate={{ y: 20, x: '-50%', opacity: 1, scale: 1 }}
                         exit={{ y: -60, x: '-50%', opacity: 0, scale: 0.95 }}
                         transition={{
-                            type: 'spring',
-                            stiffness: 300,
-                            damping: 25,
-                            mass: 0.8
+                            duration: 0.4,
+                            ease: [0.22, 1, 0.36, 1]
                         }}
                         className="fixed top-0 left-1/2 z-[100] w-auto pointer-events-auto"
                     >
-                        <header className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-[0_15px_35px_-5px_rgba(0,0,0,0.1)] px-6 md:px-8 h-12 md:h-14 rounded-full flex items-center justify-between gap-10 md:gap-14 border-zinc-200/10">
+                        <header className="bg-white/90 backdrop-blur-md border border-zinc-200/50 shadow-lg px-8 md:px-10 h-16 md:h-20 rounded-full flex items-center justify-between gap-12 md:gap-16">
                             <Link href="/" className="shrink-0">
                                 <img src="/logo.svg" alt="Antecipy" className="h-4 md:h-5 w-auto" />
                             </Link>

@@ -24,12 +24,7 @@ export default async function BlogHomePage({
 
   return (
     <div className="container min-h-screen py-10 space-y-12">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b pb-8">
-        <div className="space-y-2">
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter">Blog <span className="text-primary">Antecipy</span></h1>
-        </div>
-      </div>
+
 
       {/* Content Section */}
       <div className="space-y-8">
