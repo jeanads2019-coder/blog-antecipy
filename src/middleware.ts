@@ -1,6 +1,6 @@
 
 import { type NextRequest } from 'next/server'
-import { updateSession } from '@/lib/middleware-auth'
+import { updateSession } from './lib/middleware-auth'
 
 export async function middleware(request: NextRequest) {
     // Only process middleware for admin routes (and not internal nextjs files)
