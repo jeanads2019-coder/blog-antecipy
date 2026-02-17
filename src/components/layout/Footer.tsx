@@ -9,7 +9,7 @@ export function Footer() {
             <div className="container mx-auto px-6 py-16 md:py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16 border-b border-zinc-900 pb-16">
                     <div className="space-y-6">
-                        <img src="/icon.png" alt="Antecipy" className="h-8 md:h-10 w-auto" />
+                        <img src="/icon.png" alt="Antecipy" className="h-12 md:h-16 w-auto" />
                         <p className="text-lg md:text-xl font-medium text-zinc-300 max-w-md leading-relaxed">
                             Impulsionando o crescimento de empresas com soluções financeiras inteligentes e antecipação de recebíveis.
                         </p>
@@ -23,8 +23,8 @@ export function Footer() {
                     </div>
 
                     <div className="bg-zinc-900/50 rounded-2xl p-6 md:p-10 border border-zinc-800">
-                        <h3 className="text-white text-lg font-bold mb-2">Receba insights financeiros</h3>
-                        <p className="text-zinc-500 mb-6 text-sm">Junte-se a +5.000 empreendedores que recebem nossas análises semanais.</p>
+                        <h3 className="text-white text-lg font-bold mb-2">Domine o Fluxo de Caixa</h3>
+                        <p className="text-zinc-500 mb-6 text-sm">Receba estratégias exclusivas de antecipação e gestão financeira usadas por líderes de mercado.</p>
                         <form className="flex gap-2">
                             <input
                                 type="email"
@@ -74,11 +74,10 @@ export function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-16 mt-16 border-t border-zinc-900 text-xs md:text-sm">
-                    <p>&copy; {new Date().getFullYear()} Antecipy Tecnologia Financeira Ltda. CNPJ 00.000.000/0001-00</p>
+                    <p>&copy; 2026 Antecipy</p>
                     <div className="flex gap-6">
                         <Link href="/termos" className="hover:text-white transition-colors">Termos de uso</Link>
                         <Link href="/privacidade" className="hover:text-white transition-colors">Política de privacidade</Link>
-                        <Link href="/compliance" className="hover:text-white transition-colors">Compliance</Link>
                     </div>
                 </div>
             </div>
