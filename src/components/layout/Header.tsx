@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Instagram, Linkedin, Youtube, MessageCircle, Phone } from 'lucide-react'
+import { Instagram, Linkedin, Youtube, MessageCircle, Mail } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
 export function Header() {
@@ -32,8 +32,8 @@ export function Header() {
                 <div className="w-full bg-zinc-50 border-b py-2 px-6">
                     <div className="container mx-auto flex justify-between items-center text-[10px] sm:text-xs font-semibold text-zinc-500 uppercase tracking-widest">
                         <div className="flex items-center space-x-6">
-                            <Link href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
-                                <Phone className="h-3 w-3" /> Suporte
+                            <Link href="mailto:suporte@antecipy.com.br" className="flex items-center gap-2 hover:text-primary transition-colors">
+                                <Mail className="h-3 w-3" /> suporte@antecipy.com.br
                             </Link>
                             <Link href="#" className="flex items-center gap-2 hover:text-green-600 transition-colors text-green-700 bg-green-100/30 px-2 py-0.5 rounded-full border border-green-200/50">
                                 <MessageCircle className="h-3 w-3" /> WhatsApp
