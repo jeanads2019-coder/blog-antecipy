@@ -48,7 +48,7 @@ export function Header() {
                 {/* Main Nav (Static) */}
                 <div className="container mx-auto h-16 md:h-20 flex items-center justify-between px-4 md:px-6 border-b border-zinc-100">
                     <Link href="/" className="shrink-0">
-                        <img src="/logo.svg" alt="Antecipy" className="h-6 md:h-8 w-auto" />
+                        <img src="/icon.png" alt="Antecipy" className="h-6 md:h-8 w-auto" />
                     </Link>
 
                     <nav className="flex items-center space-x-6 md:space-x-12 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
@@ -82,7 +82,7 @@ export function Header() {
                     >
                         <header className="bg-white/90 backdrop-blur-md border border-zinc-200/50 shadow-lg px-6 md:px-10 h-14 md:h-20 rounded-full flex items-center justify-between w-full md:w-auto gap-4 md:gap-16">
                             <Link href="/" className="shrink-0">
-                                <img src="/logo.svg" alt="Antecipy" className="h-4 md:h-5 w-auto" />
+                                <img src="/icon.png" alt="Antecipy" className="h-4 md:h-5 w-auto" />
                             </Link>
 
                             <nav className="flex items-center space-x-4 md:space-x-10 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-500">
