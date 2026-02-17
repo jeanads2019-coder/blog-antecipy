@@ -24,8 +24,19 @@ export default async function BlogHomePage({
 
   return (
     <div className="container min-h-screen py-10 space-y-12">
+      {/* Hero Section */}
+      <div className="flex flex-col items-center text-center space-y-8 py-12 md:py-20">
+        <div className="space-y-4 max-w-2xl">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-zinc-950">
+            Blog Antecipy
+          </h1>
+          <p className="text-lg md:text-xl text-zinc-500 leading-relaxed">
+            Acompanhe as novidades e dicas da Antecipy para impulsionar o seu negócio.
+          </p>
+        </div>
 
-
+        <SearchInput />
+      </div>
       {/* Content Section */}
       <div className="space-y-8">
         {/* Categories */}
