@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   title: "Antecipy Blog",
   description: "Acompanhe as novidades e dicas da Antecipy para impulsionar o seu negócio.",
   icons: {
-    icon: '/icon.png',
+    icon: '/icon.svg',
+  },
+  openGraph: {
+    images: ["/opengraph-image.png"],
   },
 };
 
