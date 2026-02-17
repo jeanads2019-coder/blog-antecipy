@@ -35,12 +35,12 @@ export function Header() {
                             <Link href="mailto:suporte@antecipy.com.br" className="flex items-center gap-2 hover:text-primary transition-colors">
                                 <Mail className="h-3 w-3" /> suporte@antecipy.com.br
                             </Link>
-                            <Link href="#" className="flex items-center gap-2 hover:text-green-600 transition-colors text-green-700 bg-green-100/30 px-2 py-0.5 rounded-full border border-green-200/50">
+                            <Link href="https://wa.me/5511919310064" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-green-600 transition-colors text-green-700 bg-green-100/30 px-2 py-0.5 rounded-full border border-green-200/50">
                                 <MessageCircle className="h-3 w-3" /> WhatsApp
                             </Link>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <Link href="https://www.instagram.com/antecipy/" target="_blank" className="hover:text-primary transition-colors"><Instagram className="h-3.5 w-3.5" /></Link>
+                            <Link href="https://www.instagram.com/antecipy/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors"><Instagram className="h-3.5 w-3.5" /></Link>
                         </div>
                     </div>
                 </div>
