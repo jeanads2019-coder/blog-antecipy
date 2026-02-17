@@ -8,13 +8,36 @@ import { Footer } from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Antecipy Blog",
-  description: "Acompanhe as novidades e dicas da Antecipy para impulsionar o seu negócio.",
+  title: "Antecipy Blog | Inteligência Financeira",
+  description: "Acompanhe as novidades e estratégias da Antecipy para impulsionar o crescimento da sua empresa através da antecipação de recebíveis.",
   icons: {
-    icon: '/icon.svg',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/icon.png',
   },
   openGraph: {
-    images: ["/opengraph-image.png"],
+    title: "Antecipy Blog | Inteligência Financeira",
+    description: "Acompanhe as novidades e estratégias da Antecipy para impulsionar o fluxo de caixa da sua empresa.",
+    url: 'https://blog.antecipy.com.br',
+    siteName: 'Antecipy',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Antecipy Blog',
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Antecipy Blog",
+    description: "Impulsione seu negócio com a Antecipy.",
+    images: ['/opengraph-image.png'],
   },
 };
 
