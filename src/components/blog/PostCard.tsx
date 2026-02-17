@@ -29,7 +29,7 @@ export function PostCard({ post }: PostCardProps) {
                 <CardContent className="p-6">
                     <div className="flex gap-2 mb-3">
                         {post.category && (
-                            <Badge variant="secondary" className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20">
+                            <Badge variant="secondary" className="bg-emerald-100 text-emerald-800 hover:bg-emerald-200 border-0">
                                 {post.category.name}
                             </Badge>
                         )}
