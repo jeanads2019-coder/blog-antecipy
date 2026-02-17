@@ -9,7 +9,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Antecipy Blog",
-  description: "Notícias e dicas sobre antecipação de recebíveis.",
+  description: "Acompanhe as novidades e dicas da Antecipy para impulsionar o seu negócio.",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({
