@@ -21,7 +21,6 @@ export function Header() {
 
     const navLinks = [
         { name: 'Blog', href: '/' },
-        { name: 'Sobre', href: '/sobre' },
     ]
 
     return (
