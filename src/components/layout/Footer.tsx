@@ -1,6 +1,6 @@
 
 import Link from 'next/link'
-import { Instagram, Linkedin, Youtube, ArrowRight, ShieldCheck } from 'lucide-react'
+import { Instagram, Linkedin, Youtube, ArrowRight, ShieldCheck, Facebook, Twitter, MessageCircle } from 'lucide-react'
 
 export function Footer() {
     return (
@@ -25,7 +25,7 @@ export function Footer() {
                     <div className="bg-zinc-900/50 rounded-2xl p-6 md:p-10 border border-zinc-800">
                         <h3 className="text-white text-lg font-bold mb-2">Domine o Fluxo de Caixa</h3>
                         <p className="text-zinc-500 mb-6 text-sm">Receba estratégias exclusivas de antecipação e gestão financeira usadas por líderes de mercado.</p>
-                        <form className="flex gap-2">
+                        <form className="flex gap-2 text-zinc-900">
                             <input
                                 type="email"
                                 placeholder="Seu e-mail corporativo"
@@ -41,18 +41,18 @@ export function Footer() {
                 {/* Main Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-14">
                     <div className="space-y-4">
-                        <h4 className="text-white font-bold text-sm uppercase tracking-wider">Produto</h4>
+                        <h4 className="text-white font-bold text-sm uppercase tracking-wider">Sobre</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="/funcionalidades" className="hover:text-white transition-colors">Como funciona</Link></li>
-                            <li><Link href="/vantagens" className="hover:text-white transition-colors">Vantagens</Link></li>
-                            <li><Link href="/integracoes" className="hover:text-white transition-colors text-zinc-600 cursor-not-allowed pointer-events-none">Integrações (Em breve)</Link></li>
+                            <li><Link href="https://antecipy.com.br/sobre-nos" target="_blank" className="hover:text-white transition-colors">Sobre Nós</Link></li>
+                            <li><Link href="https://antecipy.com.br/central-de-ajuda" target="_blank" className="hover:text-white transition-colors">Central de Ajuda</Link></li>
                         </ul>
                     </div>
 
                     <div className="space-y-4">
-                        <h4 className="text-white font-bold text-sm uppercase tracking-wider">Empresa</h4>
+                        <h4 className="text-white font-bold text-sm uppercase tracking-wider">Legal</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><Link href="/contato" className="hover:text-white transition-colors">Fale Conosco</Link></li>
+                            <li><Link href="https://antecipy.com.br/termos-de-uso" target="_blank" className="hover:text-white transition-colors">Termos de Uso</Link></li>
+                            <li><Link href="https://antecipy.com.br/privacidade" target="_blank" className="hover:text-white transition-colors">Privacidade</Link></li>
                         </ul>
                     </div>
 
@@ -65,8 +65,25 @@ export function Footer() {
 
                     <div className="space-y-4">
                         <h4 className="text-white font-bold text-sm uppercase tracking-wider">Social</h4>
-                        <div className="flex gap-4">
-                            <Link href="https://www.instagram.com/antecipy/" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors"><Instagram className="w-5 h-5" /></Link>
+                        <div className="flex flex-wrap gap-3">
+                            <Link href="https://www.instagram.com/antecipy/" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors" title="Instagram">
+                                <Instagram className="w-5 h-5" />
+                            </Link>
+                            <Link href="https://x.com/antecipy" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors" title="X (Twitter)">
+                                <Twitter className="w-5 h-5" />
+                            </Link>
+                            <Link href="https://www.facebook.com/profile.php?id=61580893083548" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors" title="Facebook">
+                                <Facebook className="w-5 h-5" />
+                            </Link>
+                            <Link href="https://www.youtube.com/@Antecipy" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors" title="YouTube">
+                                <Youtube className="w-5 h-5" />
+                            </Link>
+                            <Link href="https://linkedin.com/company/antecipy" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors" title="LinkedIn">
+                                <Linkedin className="w-5 h-5" />
+                            </Link>
+                            <Link href="https://api.whatsapp.com/send?phone=5511919310064" target="_blank" className="p-2 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:text-white transition-colors" title="WhatsApp">
+                                <MessageCircle className="w-5 h-5" />
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -75,8 +92,8 @@ export function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-16 mt-16 border-t border-zinc-900 text-xs md:text-sm">
                     <p>&copy; 2026 Antecipy</p>
                     <div className="flex gap-6">
-                        <Link href="/termos" className="hover:text-white transition-colors">Termos de uso</Link>
-                        <Link href="/privacidade" className="hover:text-white transition-colors">Política de privacidade</Link>
+                        <Link href="https://antecipy.com.br/termos-de-uso" target="_blank" className="hover:text-white transition-colors">Termos de uso</Link>
+                        <Link href="https://antecipy.com.br/privacidade" target="_blank" className="hover:text-white transition-colors">Política de privacidade</Link>
                     </div>
                 </div>
             </div>
