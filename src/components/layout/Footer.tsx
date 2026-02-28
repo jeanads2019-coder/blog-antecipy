@@ -9,7 +9,7 @@ export function Footer() {
             <div className="container mx-auto px-6 py-16 md:py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-16 border-b border-zinc-900 pb-16">
                     <div className="space-y-6">
-                        <img src="/logo-white.svg" alt="Antecipy" className="h-10 md:h-12 w-auto object-contain" />
+                        <img src="/logo-new.png" alt="Antecipy" className="h-10 md:h-12 w-auto object-contain" />
                         <p className="text-lg md:text-xl font-medium text-zinc-300 max-w-md leading-relaxed">
                             Impulsionando o crescimento de empresas com soluções financeiras inteligentes e antecipação de recebíveis.
                         </p>

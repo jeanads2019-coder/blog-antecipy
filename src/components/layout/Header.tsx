@@ -48,7 +48,7 @@ export function Header() {
                 <div className="container mx-auto h-20 md:h-24 flex items-center justify-between px-4 md:px-6 border-b border-zinc-100/80">
                     <Link href="/" className="shrink-0 transition-transform hover:scale-105">
                         <img
-                            src="/logo.svg"
+                            src="/logo-new.png"
                             alt="Antecipy"
                             className="h-10 md:h-12 w-auto object-contain"
                         />
@@ -87,7 +87,7 @@ export function Header() {
                         <header className="bg-white/85 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] px-6 md:px-10 h-16 md:h-20 rounded-full flex items-center justify-between w-full md:w-auto gap-8 md:gap-20">
                             <Link href="/" className="shrink-0 transition-transform hover:scale-105">
                                 <img
-                                    src="/logo.svg"
+                                    src="/logo-new.png"
                                     alt="Antecipy"
                                     className="h-7 md:h-9 w-auto object-contain"
                                 />
