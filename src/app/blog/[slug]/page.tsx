@@ -60,6 +60,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     // Related Posts Logic
     const relatedPosts = await getRelatedPosts(post.id, post.category?.id)
 
+    // Function to clean markdown from duplicate titles (h1 or h2 at the start)
+    const cleanContent = (content: string, title: string) => {
+        if (!content) return '';
+        // Create a loose regex to match the title line regardless of specific heading level or minor spacing differences
+        const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+        const regex = new RegExp(`^\\s*#+\\s+${escapedTitle}\\s*(\\n|$)`, 'i');
+        return content.replace(regex, '').trim();
+    };
+
+    const cleanedMarkdown = cleanContent(post.content_md || '', post.title);
+
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
@@ -101,21 +112,21 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <article className="max-w-4xl mx-auto">
                 <div className="space-y-4 text-center mb-8">
                     <div className="flex justify-center gap-2">
-                        {post.category && <Badge>{post.category.name}</Badge>}
+                        {post.category && <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-0">{post.category.name}</Badge>}
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground md:leading-[1.1]">
+                    <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-foreground leading-[1.2] md:leading-[1.1]">
                         {post.title}
                     </h1>
-                    <div className="flex items-center justify-center gap-4 text-muted-foreground">
-                        <span>{post.author_name}</span>
-                        <span>•</span>
+                    <div className="flex items-center justify-center gap-3 text-sm font-medium text-muted-foreground pt-2">
+                        <span className="text-foreground">{post.author_name}</span>
+                        <span className="opacity-30">•</span>
                         <time dateTime={post.published_at || ""}>
                             {post.published_at ? format(new Date(post.published_at), "d 'de' MMMM, yyyy", { locale: ptBR }) : ''}
                         </time>
                     </div>
                 </div>
 
-                <div className="relative aspect-video w-full overflow-hidden rounded-xl mb-10 shadow-lg">
+                <div className="relative aspect-video w-full overflow-hidden rounded-2xl mb-12 shadow-2xl shadow-primary/5 border border-zinc-100 dark:border-zinc-800">
                     <Image
                         src={post.cover_image_url || '/placeholder.svg'}
                         alt={post.title}
@@ -125,10 +136,22 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-10">
-                    <div className="prose prose-lg dark:prose-invert max-w-none">
-                        <ReactMarkdown>{post.content_md || ''}</ReactMarkdown>
-
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12">
+                    <div className="prose prose-zinc prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:underline prose-p:leading-relaxed text-zinc-700 dark:text-zinc-300">
+                        <ReactMarkdown
+                            components={{
+                                h1: ({ ...props }) => <h1 className="text-2xl md:text-3xl font-bold mt-12 mb-6 text-foreground tracking-tight" {...props} />,
+                                h2: ({ ...props }) => <h2 className="text-xl md:text-2xl font-bold mt-12 mb-6 text-foreground tracking-tight border-b pb-2 border-zinc-100 dark:border-zinc-800" {...props} />,
+                                h3: ({ ...props }) => (
+                                    <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 text-foreground tracking-tight" {...props} />
+                                ),
+                                p: ({ ...props }) => (
+                                    <p className="leading-relaxed mb-6" {...props} />
+                                ),
+                            }}
+                        >
+                            {cleanedMarkdown}
+                        </ReactMarkdown>
                     </div>
 
                     <aside className="space-y-8">
