@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description,
             url,
             type: 'article',
-            publishedTime: post.published_at,
+            publishedTime: post.published_at || undefined,
             authors: ['Antecipy'],
             images: [
                 {
