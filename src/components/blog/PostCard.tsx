@@ -15,14 +15,15 @@ interface PostCardProps {
 export function PostCard({ post }: PostCardProps) {
     return (
         <Link href={`/blog/${post.slug}`} className="group block h-full">
-            <Card className="overflow-hidden h-full border-0 shadow-sm hover:shadow-md transition-shadow bg-background/50 backdrop-blur-sm">
-                <div className="relative aspect-video w-full overflow-hidden">
+            <Card className="overflow-hidden h-full border border-black/[0.03] dark:border-white/[0.05] shadow-sm hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.4)] transition-all duration-500 bg-background/50 backdrop-blur-sm hover:-translate-y-1">
+                <div className="relative aspect-video w-full overflow-hidden border-b border-black/[0.03] dark:border-white/[0.05]">
 
                     <Image
                         src={post.cover_image_url || '/placeholder.svg'}
                         alt={post.title}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                     />
 
                 </div>
@@ -39,9 +40,9 @@ export function PostCard({ post }: PostCardProps) {
                             </Badge>
                         ))}
                     </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                    <h2 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {post.title}
-                    </h3>
+                    </h2>
                     <div className="text-muted-foreground text-sm line-clamp-3 prose prose-zinc prose-sm dark:prose-invert">
                         <ReactMarkdown
                             allowedElements={['p', 'strong', 'em', 'span', 'b', 'i']} // Limit elements for safety in cards

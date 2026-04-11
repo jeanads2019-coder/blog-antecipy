@@ -1,4 +1,5 @@
 
+import { Metadata } from 'next'
 import { getPostBySlug, getRelatedPosts } from "@/lib/api"
 import { notFound } from "next/navigation"
 import Image from "next/image"
@@ -49,6 +50,47 @@ const ShareButtons = ({ title, slug }: { title: string, slug: string }) => {
     )
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+    const post = await getPostBySlug(slug)
+
+    if (!post) return {}
+
+    const title = `${post.title} | Antecipy Blog - Antecipação de Salário CLT`
+    const description = post.excerpt || `Aprenda sobre ${post.title} no blog da Antecipy. Especialistas em antecipação de salário CLT.`
+    const url = `https://antecipy.com.br/blog/${slug}`
+
+    return {
+        title,
+        description,
+        alternates: {
+            canonical: url,
+        },
+        openGraph: {
+            title,
+            description,
+            url,
+            type: 'article',
+            publishedTime: post.published_at,
+            authors: ['Antecipy'],
+            images: [
+                {
+                    url: post.cover_image_url || 'https://antecipy.com.br/opengraph-image.png',
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [post.cover_image_url || 'https://antecipy.com.br/opengraph-image.png'],
+        },
+    }
+}
+
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
     const post = await getPostBySlug(slug)
@@ -71,23 +113,67 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     const cleanedMarkdown = cleanContent(post.content_md || '', post.title);
 
-    const jsonLd = {
+    const blogPostingJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: post.title,
+        description: post.excerpt,
         image: post.cover_image_url,
         datePublished: post.published_at,
+        dateModified: post.updated_at || post.published_at,
         author: {
-            '@type': 'Organization', // Or Person
-            name: post.author_name
+            '@type': 'Organization',
+            name: 'Antecipy',
+            url: 'https://antecipy.com.br'
+        },
+        publisher: {
+            '@type': 'Organization',
+            name: 'Antecipy',
+            logo: {
+                '@type': 'ImageObject',
+                url: 'https://antecipy.com.br/logo.png'
+            }
+        },
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': `https://antecipy.com.br/blog/${post.slug}`
         }
+    }
+
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://antecipy.com.br'
+            },
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Blog',
+                item: 'https://antecipy.com.br/blog'
+            },
+            {
+                '@type': 'ListItem',
+                position: 3,
+                name: post.title,
+                item: `https://antecipy.com.br/blog/${post.slug}`
+            }
+        ]
     }
 
     return (
         <div className="container py-10">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
 
             <AnalyticsTracker postId={post.id} />
@@ -126,13 +212,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     </div>
                 </div>
 
-                <div className="relative aspect-video w-full overflow-hidden rounded-2xl mb-12 shadow-2xl shadow-primary/5 border border-zinc-100 dark:border-zinc-800">
+                <div className="group relative aspect-video w-full overflow-hidden rounded-2xl mb-12 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] border border-black/[0.03] dark:border-white/[0.05] transition-all duration-500 ease-out hover:scale-[1.005]">
                     <Image
                         src={post.cover_image_url || '/placeholder.svg'}
                         alt={post.title}
                         fill
-                        className="object-cover"
                         priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                        className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                     />
                 </div>
 
@@ -140,10 +227,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                     <div className="prose prose-zinc prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary hover:prose-a:underline prose-p:leading-relaxed text-zinc-700 dark:text-zinc-300">
                         <ReactMarkdown
                             components={{
-                                h1: ({ ...props }) => <h1 className="text-2xl md:text-3xl font-bold mt-12 mb-6 text-foreground tracking-tight" {...props} />,
+                                h1: ({ ...props }) => <h2 className="text-2xl md:text-3xl font-bold mt-12 mb-6 text-foreground tracking-tight" {...props} />,
                                 h2: ({ ...props }) => <h2 className="text-xl md:text-2xl font-bold mt-12 mb-6 text-foreground tracking-tight border-b pb-2 border-zinc-100 dark:border-zinc-800" {...props} />,
                                 h3: ({ ...props }) => (
                                     <h3 className="text-lg md:text-xl font-bold mt-8 mb-4 text-foreground tracking-tight" {...props} />
+                                ),
+                                h4: ({ ...props }) => (
+                                    <h4 className="text-base md:text-lg font-bold mt-6 mb-3 text-foreground tracking-tight" {...props} />
                                 ),
                                 p: ({ ...props }) => (
                                     <p className="leading-relaxed mb-6" {...props} />

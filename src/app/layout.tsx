@@ -8,8 +8,12 @@ import { Footer } from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Antecipy Blog | Inteligência Financeira",
-  description: "Acompanhe as novidades e estratégias da Antecipy para impulsionar o crescimento da sua empresa através da antecipação de recebíveis.",
+  title: "Antecipy Blog | Antecipação de Salário CLT e Educação Financeira",
+  description: "Aprenda tudo sobre antecipação de salário CLT no blog da Antecipy. Dicas financeiras, direitos trabalhistas e como antecipar seu salário com segurança.",
+  metadataBase: new URL('https://antecipy.com.br'),
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
@@ -18,9 +22,9 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   openGraph: {
-    title: "Antecipy Blog | Inteligência Financeira",
-    description: "Acompanhe as novidades e estratégias da Antecipy para impulsionar o fluxo de caixa da sua empresa.",
-    url: 'https://blog.antecipy.com.br',
+    title: "Antecipy Blog | Antecipação de Salário CLT",
+    description: "Aprenda tudo sobre antecipação de salário CLT no blog da Antecipy. Dicas financeiras e direitos trabalhistas.",
+    url: 'https://antecipy.com.br/blog',
     siteName: 'Antecipy',
     images: [
       {
@@ -35,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Antecipy Blog",
-    description: "Impulsione seu negócio com a Antecipy.",
+    title: "Antecipy Blog | Antecipação de Salário CLT",
+    description: "Tudo sobre seu adiantamento salarial e inteligência financeira.",
     images: ['/opengraph-image.png'],
   },
 };

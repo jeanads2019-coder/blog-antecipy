@@ -11,7 +11,7 @@ export function Footer() {
                     <div className="space-y-6 max-w-2xl">
                         <img src="/logo-new.png" alt="Antecipy" className="h-10 md:h-12 w-auto mx-auto object-contain" />
                         <p className="text-lg md:text-xl font-medium text-zinc-700 leading-relaxed">
-                            Impulsionando o crescimento de empresas com soluções financeiras inteligentes e antecipação de recebíveis.
+                            Impulsionando a liberdade financeira de trabalhadores com soluções inteligentes de antecipação de salário CLT.
                         </p>
                         <div className="flex items-center justify-center gap-4 pt-2">
                             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-bold uppercase tracking-wider border border-green-500/20">
