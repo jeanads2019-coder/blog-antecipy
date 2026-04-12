@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase-browser'
 // This will be called at build time or revalidation
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const supabase = createClient()
-    const baseUrl = process.env.SITE_URL || 'https://blog.antecipy.com.br'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://blog.antecipy.com.br'
 
     // Fetch posts
     const { data: posts } = await supabase

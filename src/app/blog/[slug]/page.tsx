@@ -20,11 +20,13 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Twitter, Linkedin } from "lucide-react"
 import { AnalyticsTracker } from "@/components/cms/AnalyticsTracker"
+import { BlogPostSchema } from "@/components/BlogPostSchema"
 
 
 // Mock share buttons (replace with real share URLs later)
 const ShareButtons = ({ title, slug }: { title: string, slug: string }) => {
-    const url = `https://blog.antecipy.com.br/blog/${slug}`
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://blog.antecipy.com.br'
+    const url = `${baseUrl}/${slug}`
     const encodedUrl = encodeURIComponent(url)
     const encodedTitle = encodeURIComponent(title)
 
@@ -58,7 +60,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const title = `${post.title} | Antecipy Blog - Antecipação de Salário CLT`
     const description = post.excerpt || `Aprenda sobre ${post.title} no blog da Antecipy. Especialistas em antecipação de salário CLT.`
-    const url = `https://antecipy.com.br/blog/${slug}`
+    
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://blog.antecipy.com.br'
+    const url = `${baseUrl}/${slug}`
 
     return {
         title,
@@ -75,7 +79,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             authors: ['Antecipy'],
             images: [
                 {
-                    url: post.cover_image_url || 'https://antecipy.com.br/opengraph-image.png',
+                    url: post.cover_image_url || `${baseUrl}/opengraph-image.png`,
                     width: 1200,
                     height: 630,
                     alt: post.title,
@@ -86,7 +90,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             card: 'summary_large_image',
             title,
             description,
-            images: [post.cover_image_url || 'https://antecipy.com.br/opengraph-image.png'],
+            images: [post.cover_image_url || `${baseUrl}/opengraph-image.png`],
         },
     }
 }
@@ -113,67 +117,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     const cleanedMarkdown = cleanContent(post.content_md || '', post.title);
 
-    const blogPostingJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: post.title,
-        description: post.excerpt,
-        image: post.cover_image_url,
-        datePublished: post.published_at,
-        dateModified: post.updated_at || post.published_at,
-        author: {
-            '@type': 'Organization',
-            name: 'Antecipy',
-            url: 'https://antecipy.com.br'
-        },
-        publisher: {
-            '@type': 'Organization',
-            name: 'Antecipy',
-            logo: {
-                '@type': 'ImageObject',
-                url: 'https://antecipy.com.br/logo.png'
-            }
-        },
-        mainEntityOfPage: {
-            '@type': 'WebPage',
-            '@id': `https://antecipy.com.br/blog/${post.slug}`
-        }
-    }
-
-    const breadcrumbJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-            {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'Home',
-                item: 'https://antecipy.com.br'
-            },
-            {
-                '@type': 'ListItem',
-                position: 2,
-                name: 'Blog',
-                item: 'https://antecipy.com.br/blog'
-            },
-            {
-                '@type': 'ListItem',
-                position: 3,
-                name: post.title,
-                item: `https://antecipy.com.br/blog/${post.slug}`
-            }
-        ]
-    }
-
     return (
         <div className="container py-10">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            <BlogPostSchema
+                title={post.title}
+                description={post.excerpt || ''}
+                slug={post.slug}
+                publishedAt={post.published_at || ''}
+                updatedAt={post.updated_at}
+                imageUrl={post.cover_image_url || undefined}
+                authorName={post.author_name || 'Antecipy'}
             />
 
             <AnalyticsTracker postId={post.id} />

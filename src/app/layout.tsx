@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Antecipy Blog | Antecipação de Salário CLT e Educação Financeira",
   description: "Aprenda tudo sobre antecipação de salário CLT no blog da Antecipy. Dicas financeiras, direitos trabalhistas e como antecipar seu salário com segurança.",
-  metadataBase: new URL('https://antecipy.com.br'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://blog.antecipy.com.br'),
   alternates: {
     canonical: '/',
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Antecipy Blog | Antecipação de Salário CLT",
     description: "Aprenda tudo sobre antecipação de salário CLT no blog da Antecipy. Dicas financeiras e direitos trabalhistas.",
-    url: 'https://antecipy.com.br/blog',
+    url: 'https://blog.antecipy.com.br',
     siteName: 'Antecipy',
     images: [
       {

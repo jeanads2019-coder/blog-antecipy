@@ -22,8 +22,25 @@ export default async function BlogHomePage({
 
   const [posts, categories] = await Promise.all([postsPromise, categoriesPromise])
 
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Blog Antecipy',
+    description: 'Dicas sobre antecipação de salário, finanças pessoais e direitos do trabalhador CLT.',
+    url: 'https://blog.antecipy.com.br',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Antecipy',
+      url: 'https://antecipy.com.br',
+    },
+  }
+
   return (
     <div className="min-h-screen pb-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 overflow-hidden bg-white">
         <div className="container relative z-10 text-center space-y-8">
